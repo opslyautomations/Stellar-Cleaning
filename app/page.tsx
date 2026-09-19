@@ -1,69 +1,149 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { Phone } from "lucide-react";
 
-export default function Home() {
+import GHLForm from "@/components/GHLForm";
+import Button from "@/components/ui/Button";
+import CoverageBand from "@/components/ui/CoverageBand";
+import CtaSlab from "@/components/ui/CtaSlab";
+import LedgerRows from "@/components/ui/LedgerRows";
+import MarqueeRule from "@/components/ui/MarqueeRule";
+import NumberedProcess from "@/components/ui/NumberedProcess";
+import OfferCards from "@/components/ui/OfferCards";
+import OffsetCardGrid from "@/components/ui/OffsetCardGrid";
+import PortraitAside from "@/components/ui/PortraitAside";
+import QuoteWall from "@/components/ui/QuoteWall";
+import SplitAnchorHero from "@/components/ui/SplitAnchorHero";
+import StampStrip from "@/components/ui/StampStrip";
+
+import { AREAS, BUSINESS, CALL_LABEL, TEL_HREF } from "@/lib/business";
+import {
+  DIFFERENTIATORS,
+  MARQUEE_TEXT,
+  OFFERS_SHORT,
+  PROCESS_STEPS,
+  SERVICE_CARDS,
+  coverageGroups,
+} from "@/lib/content";
+import { HOME_PORTRAIT } from "@/lib/images";
+import { REVIEWS } from "@/lib/reviews";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({ path: "/" });
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* 1 — Hero. The h1 is the LCP element: no reveal, no animation. */}
+      <SplitAnchorHero
+        eyebrow={`${BUSINESS.city.toUpperCase()}, ${BUSINESS.state}`}
+        title="Professional cleaning you can count on"
+        lede="Stellar Cleaning Solutions keeps businesses and homes across the Willamette Valley and Central Oregon consistently, thoroughly clean. Custodial and janitorial work for commercial properties and offices, plus residential cleaning built around your schedule."
+        actions={
+          <>
+            <Button href={TEL_HREF} variant="primary" icon={<Phone size={18} aria-hidden="true" />}>
+              {CALL_LABEL}
+            </Button>
+            <Button href="/specials" variant="secondary">
+              See Current Specials
+            </Button>
+          </>
+        }
+        slot={<GHLForm heading="Request a free estimate" id="estimate" />}
+      />
+
+      {/* 2 — Trust bar */}
+      <StampStrip
+        label="Why clients pick Stellar"
+        items={[
+          `${BUSINESS.rating.value}★ ON GOOGLE`,
+          `${BUSINESS.rating.count} REVIEWS`,
+          "BACKGROUND-CHECKED CREWS",
+          "ECO-FRIENDLY PRODUCTS",
+          `${AREAS.length} CITIES SERVED`,
+        ]}
+      />
+
+      {/* 3 — Services */}
+      <OffsetCardGrid
+        stamp="WHAT WE DO"
+        title="Four ways we keep your space clean"
+        cards={SERVICE_CARDS}
+        columns={4}
+      />
+
+      {/* 4 — Why Stellar */}
+      <LedgerRows
+        tone="alt"
+        stamp="WHY STELLAR"
+        title="The difference is that we actually show up"
+        rows={DIFFERENTIATORS}
+      />
+
+      {/* 5 — Owner intro. The one priority image on this page. */}
+      <PortraitAside
+        stamp="THE OWNER"
+        title="Run by Matt, cleaned by people he trained"
+        body={[
+          "Stellar Cleaning Solutions is owner-operated out of Corvallis. Matt built the company around a simple idea — that a cleaning service is only worth what its consistency is worth. That means the same crew on your account, a supervisor who inspects the work, and someone who picks up the phone when you call.",
+          "It is why property managers, dental offices and restaurants across the valley have stayed with us.",
+        ]}
+        image={{ ...HOME_PORTRAIT, priority: true }}
+        link={{ href: "/about", label: "More about us →" }}
+      />
+
+      {/* 6 — How it works */}
+      <NumberedProcess
+        tone="alt"
+        stamp="HOW IT WORKS"
+        title="Three steps to a cleaner space"
+        steps={PROCESS_STEPS}
+      />
+
+      {/* 7 — Marquee. The one per page. */}
+      <MarqueeRule label="Cities we serve" text={MARQUEE_TEXT} />
+
+      {/* 8 — Coverage */}
+      <CoverageBand
+        stamp="COVERAGE"
+        title="Serving the Willamette Valley and Central Oregon"
+        statement="Ten cities, two regions, one standard. Central Oregon runs on its own scheduled route rather than being squeezed onto the end of a valley day."
+        groups={coverageGroups()}
+      />
+
+      {/* 9 — Reviews. Only verified entries from /lib/reviews.ts. */}
+      <QuoteWall
+        stamp="WHAT CLIENTS SAY"
+        title={`${BUSINESS.rating.value} stars across ${BUSINESS.rating.count} Google reviews`}
+        quotes={REVIEWS.map((review) => ({
+          author: review.author,
+          body: review.body,
+          rating: review.rating,
+          source: `${review.source} review`,
+        }))}
+        variant="pair"
+        after={
+          <>
+            <Button href={BUSINESS.gbpUrl} variant="secondary" external>
+              Read all {BUSINESS.rating.count} reviews on Google →
+            </Button>
+            <Button href="/reviews" variant="ghost">
+              See more reviews →
+            </Button>
+          </>
+        }
+      />
+
+      {/* 10 — Specials */}
+      <OfferCards tone="alt" stamp="LIMITED OFFERS" title="Current specials" offers={OFFERS_SHORT} />
+
+      {/* 11 — Final CTA */}
+      <CtaSlab
+        stamp="READY TO START"
+        title="Ready for a space that stays clean?"
+        body="Free estimates across all ten cities we serve. No obligation, no pressure."
+        primary={{ href: TEL_HREF, label: CALL_LABEL, external: true, icon: <Phone size={18} aria-hidden="true" /> }}
+        secondary={{ href: "/contact", label: "Request Your Free Estimate" }}
+      />
+    </>
   );
 }
