@@ -859,14 +859,46 @@ ul, ol { margin: 0; padding: 0; }
   box-shadow: var(--shadow-lg);
 }
 .portrait__frame img { width: 100%; height: auto; }
-.portrait__credit {
-  margin: 34px 0 0;
-  font-size: 0.78rem;
-  color: var(--ink-muted);
-  text-align: right;
-  max-width: none;
+/* Photo credit behind an ⓘ toggle in the photo's top-right corner. */
+.photo-info {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
 }
-.portrait__credit a { color: var(--ink-muted); text-decoration: underline; }
+.photo-info summary {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-sm);
+  opacity: .8;
+  transition: opacity 160ms ease;
+}
+.photo-info summary::-webkit-details-marker { display: none; }
+.photo-info summary:hover, .photo-info[open] summary { opacity: 1; }
+.photo-info__panel {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: max-content;
+  max-width: 260px;
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+.photo-info__panel a { color: var(--ink); text-decoration: underline; }
 .portrait__body p { color: var(--ink-muted); font-size: 1.05rem; }
 .portrait__body p:has(> .btn) { margin-top: 26px; }
 .sect--deep .portrait__body p { color: var(--paper); opacity: .85; }
@@ -1182,8 +1214,6 @@ ul, ol { margin: 0; padding: 0; }
 .coverage__tile:hover, .coverage__tile:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .coverage__tile:hover img, .coverage__tile:focus-visible img { transform: scale(1.06); }
 .coverage__tile:hover .coverage__chip-arrow { transform: translateX(3px); }
-.coverage__credit { margin-top: 28px; font-size: 0.8rem; color: var(--ink-muted); }
-.coverage__credit a { color: var(--ink-muted); text-decoration: underline; }
 
 /* ====================== 14. RuledAccordion =============================== */
 .accordion { display: grid; gap: 12px; }

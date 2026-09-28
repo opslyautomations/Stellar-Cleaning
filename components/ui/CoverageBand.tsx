@@ -75,11 +75,6 @@ export default function CoverageBand({
             </div>
           ))}
         </div>
-        {hasPhotos ? (
-          <p className="coverage__credit">
-            City photos from Wikimedia Commons contributors. <Link href="/credits">Photo credits</Link>
-          </p>
-        ) : null}
       </Container>
     </section>
   );

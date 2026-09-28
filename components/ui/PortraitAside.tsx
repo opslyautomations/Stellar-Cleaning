@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Info } from "lucide-react";
 import Container from "./Container";
 import Frame from "./Frame";
 import StampBadge from "./StampBadge";
@@ -39,7 +40,7 @@ export default function PortraitAside({
   link?: { href: string; label: string };
   tone?: Tone;
   headingLevel?: "h2" | "h3";
-  /** Attribution line under the photo, for licensed images. */
+  /** Attribution for licensed images, behind an ⓘ toggle on the photo. */
   credit?: PhotoCredit;
 }) {
   const Heading = headingLevel;
@@ -62,23 +63,29 @@ export default function PortraitAside({
                   priority={image.priority}
                 />
               </Frame>
+              {credit ? (
+                <details className="photo-info">
+                  <summary aria-label="Photo credit">
+                    <Info size={16} aria-hidden="true" />
+                  </summary>
+                  <p className="photo-info__panel">
+                    Photo by{" "}
+                    <a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      {credit.author}
+                    </a>
+                    ,{" "}
+                    {credit.licenseUrl ? (
+                      <a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer">
+                        {credit.license}
+                      </a>
+                    ) : (
+                      credit.license
+                    )}
+                    , via Wikimedia Commons
+                  </p>
+                </details>
+              ) : null}
             </div>
-            {credit ? (
-              <p className="portrait__credit">
-                Photo:{" "}
-                <a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer">
-                  {credit.author}
-                </a>
-                ,{" "}
-                {credit.licenseUrl ? (
-                  <a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer">
-                    {credit.license}
-                  </a>
-                ) : (
-                  credit.license
-                )}
-              </p>
-            ) : null}
           </div>
           <div className="portrait__body" data-reveal="block">
             <Heading>{title}</Heading>
