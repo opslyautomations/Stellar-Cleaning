@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, Sparkles, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
@@ -132,9 +133,7 @@ export default function Header() {
         <Container>
           <div className="header__bar">
             <Link className="header__wordmark" href="/">
-              <span className="brand-mark" aria-hidden="true">
-                <Sparkles size={20} strokeWidth={2.2} />
-              </span>
+              <Image className="brand-mark" src="/images/logo.png" alt="" width={48} height={48} />
               <span className="header__wordmark-text">Stellar Cleaning Solutions</span>
             </Link>
 
@@ -234,9 +233,7 @@ export default function Header() {
           <Container>
             <div className="drawer__top">
               <Link className="header__wordmark" href="/">
-                <span className="brand-mark" aria-hidden="true">
-                  <Sparkles size={20} strokeWidth={2.2} />
-                </span>
+                <Image className="brand-mark" src="/images/logo.png" alt="" width={48} height={48} />
                 <span className="header__wordmark-text">Stellar Cleaning Solutions</span>
               </Link>
               <button className="header__burger" type="button" onClick={() => setDrawerOpen(false)}>

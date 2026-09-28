@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 
 import FooterLedger from "@/components/ui/FooterLedger";
 import { AREAS, BUSINESS, MAIL_HREF, SERVICES, TEL_HREF } from "@/lib/business";
@@ -10,9 +10,7 @@ export default function Footer() {
       company={
         <>
           <span className="footer__wordmark">
-            <span className="brand-mark" aria-hidden="true">
-              <Sparkles size={20} strokeWidth={2.2} />
-            </span>
+            <Image className="brand-mark" src="/images/logo.png" alt="" width={48} height={48} />
             {BUSINESS.name}
           </span>
           <p className="footer__tagline">
