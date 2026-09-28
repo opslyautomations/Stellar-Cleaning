@@ -1,8 +1,8 @@
+import { CheckCircle2 } from "lucide-react";
 import Container from "./Container";
-import StampBadge from "./StampBadge";
 import { delay, sectionClass, type Tone } from "./section";
 
-/** A horizontal row of 4–5 rotated stamps, alternating -2deg / +1.5deg. */
+/** A full-width trust bar: 3–5 short proof points, each with a check icon. */
 export default function StampStrip({
   items,
   tone = "alt",
@@ -17,10 +17,11 @@ export default function StampStrip({
       <Container>
         <ul className="stamp-strip__row">
           {items.map((item, i) => (
-            <li key={item} style={delay(i, 60)}>
-              <StampBadge reveal alt={i % 2 === 1}>
-                {item}
-              </StampBadge>
+            <li className="stamp-strip__item" key={item} data-reveal="card" style={delay(i, 70)}>
+              <span className="stamp-strip__icon" aria-hidden="true">
+                <CheckCircle2 size={18} />
+              </span>
+              {item}
             </li>
           ))}
         </ul>

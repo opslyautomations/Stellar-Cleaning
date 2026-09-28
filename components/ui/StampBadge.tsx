@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
 /**
- * The rotated pill that introduces every section.
- * 1–3 words. Space Mono, uppercase, amber fill, 2px ink border.
+ * The eyebrow that introduces every section. 1–3 words, uppercase.
+ * A white pill with an amber dot on its own; a plain label inside a SectionHeader.
  */
 export default function StampBadge({
   children,
@@ -12,11 +12,11 @@ export default function StampBadge({
   className,
 }: {
   children: ReactNode;
-  /** +1.5deg instead of -2deg, for alternating strips. */
+  /** Kept for API compatibility; no longer changes the rendering. */
   alt?: boolean;
   /** Opt into the stamp entrance. Never used above a hero h1. */
   reveal?: boolean;
-  /** Paper fill instead of amber, for strips that would otherwise be all amber. */
+  /** Deep-amber dot instead of the bright one. */
   plain?: boolean;
   className?: string;
 }) {

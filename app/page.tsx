@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone } from "lucide-react";
+import { Phone, Star } from "lucide-react";
 
 import GHLForm from "@/components/GHLForm";
 import Button from "@/components/ui/Button";
@@ -24,7 +24,7 @@ import {
   SERVICE_CARDS,
   coverageGroups,
 } from "@/lib/content";
-import { HOME_PORTRAIT } from "@/lib/images";
+import { HOME_PORTRAIT, SERVICE_IMAGES } from "@/lib/images";
 import { REVIEWS } from "@/lib/reviews";
 import { buildMetadata } from "@/lib/seo";
 
@@ -36,7 +36,11 @@ export default function HomePage() {
       {/* 1 — Hero. The h1 is the LCP element: no reveal, no animation. */}
       <SplitAnchorHero
         eyebrow={`${BUSINESS.city.toUpperCase()}, ${BUSINESS.state}`}
-        title="Professional cleaning you can count on"
+        title={
+          <>
+            Professional cleaning <span className="accent-text">you can count on</span>
+          </>
+        }
         lede="Stellar Cleaning Solutions keeps businesses and homes across the Willamette Valley and Central Oregon consistently, thoroughly clean. Custodial and janitorial work for commercial properties and offices, plus residential cleaning built around your schedule."
         actions={
           <>
@@ -48,6 +52,18 @@ export default function HomePage() {
             </Button>
           </>
         }
+        highlights={["Background-checked crews", "Eco-friendly products", "Free, no-obligation estimates"]}
+        chip={
+          <>
+            <span className="hero__chip-icon" aria-hidden="true">
+              <Star size={18} fill="currentColor" strokeWidth={0} />
+            </span>
+            <span>
+              <strong>{BUSINESS.rating.value} on Google</strong>
+              <span>{BUSINESS.rating.count} verified reviews</span>
+            </span>
+          </>
+        }
         slot={<GHLForm heading="Request a free estimate" id="estimate" />}
       />
 
@@ -55,11 +71,11 @@ export default function HomePage() {
       <StampStrip
         label="Why clients pick Stellar"
         items={[
-          `${BUSINESS.rating.value}★ ON GOOGLE`,
-          `${BUSINESS.rating.count} REVIEWS`,
-          "BACKGROUND-CHECKED CREWS",
-          "ECO-FRIENDLY PRODUCTS",
-          `${AREAS.length} CITIES SERVED`,
+          `${BUSINESS.rating.value}★ rating on Google`,
+          `${BUSINESS.rating.count} verified reviews`,
+          "Background-checked crews",
+          "Eco-friendly products",
+          `${AREAS.length} cities served`,
         ]}
       />
 
@@ -67,7 +83,11 @@ export default function HomePage() {
       <OffsetCardGrid
         stamp="WHAT WE DO"
         title="Four ways we keep your space clean"
-        cards={SERVICE_CARDS}
+        lede="Commercial, janitorial and residential programs — each built around your schedule and inspected by a supervisor."
+        cards={SERVICE_CARDS.map((card) => ({
+          ...card,
+          image: card.href ? SERVICE_IMAGES[card.href.replace("/services/", "")] : undefined,
+        }))}
         columns={4}
       />
 
@@ -112,6 +132,7 @@ export default function HomePage() {
 
       {/* 9 — Reviews. Only verified entries from /lib/reviews.ts. */}
       <QuoteWall
+        tone="alt"
         stamp="WHAT CLIENTS SAY"
         title={`${BUSINESS.rating.value} stars across ${BUSINESS.rating.count} Google reviews`}
         quotes={REVIEWS.map((review) => ({
@@ -134,7 +155,7 @@ export default function HomePage() {
       />
 
       {/* 10 — Specials */}
-      <OfferCards tone="alt" stamp="LIMITED OFFERS" title="Current specials" offers={OFFERS_SHORT} />
+      <OfferCards stamp="LIMITED OFFERS" title="Current specials" offers={OFFERS_SHORT} />
 
       {/* 11 — Final CTA */}
       <CtaSlab

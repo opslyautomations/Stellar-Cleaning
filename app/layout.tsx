@@ -8,7 +8,7 @@ import Header from "@/components/layout/Header";
 import StickyCta from "@/components/layout/StickyCta";
 import { BUSINESS } from "@/lib/business";
 import { localBusinessSchema } from "@/lib/schema";
-import { body, display, stamp } from "./fonts";
+import { body, display } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${display.variable} ${body.variable} ${stamp.variable}`}
+      className={`${display.variable} ${body.variable}`}
     >
       <head>
         {/* Marks that JS is running, so the pre-reveal hidden state may apply.

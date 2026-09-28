@@ -27,7 +27,7 @@ import StampStrip from "@/components/ui/StampStrip";
 import TabDossier from "@/components/ui/TabDossier";
 
 export const metadata: Metadata = {
-  title: "Design system — Warm Trades",
+  title: "Design system — Stellar",
   robots: { index: false, follow: false },
 };
 
@@ -37,7 +37,7 @@ const TOKENS = [
   { name: "--surface", hex: "#FFFFFF", note: "Card face" },
   { name: "--ink", hex: "#1A1614", note: "Primary text — 17:1 on paper" },
   { name: "--ink-muted", hex: "#6B5F57", note: "Secondary text — 5.7:1 on paper" },
-  { name: "--deep", hex: "#2A2320", note: "Dark bands, footer, CTA slabs" },
+  { name: "--deep", hex: "#2A2320", note: "Footer, marquee, CTA panel" },
   { name: "--accent", hex: "#F59E0B", note: "FILL ONLY — never text on light" },
   { name: "--accent-deep", hex: "#B45309", note: "Accent text/links — 4.7:1 on paper" },
   { name: "--rule", hex: "#E0D5C6", note: "Hairlines and borders" },
@@ -47,7 +47,7 @@ const CONTRAST = [
   ["--ink on --paper", "17:1", "All body text"],
   ["--ink-muted on --paper", "5.7:1", "Secondary text, captions"],
   ["--accent-deep on --paper", "4.7:1", "Link text, accent headings"],
-  ["--ink on --accent", "8.2:1", "Text inside stamp badges"],
+  ["--ink on --accent", "8.2:1", "Primary buttons, number badges"],
   ["--paper on --deep", "14.4:1", "Text in dark bands"],
 ];
 
@@ -61,15 +61,16 @@ const SCALE = [
 ];
 
 const MOTION = [
-  ["Section header + body block", "data-reveal, once", "translateY(16px) → 0, opacity .001 → 1", "520ms", "cubic-bezier(.22,.61,.36,1)"],
-  ["Framed card / image", "data-reveal, once, 60ms stagger", "translateY(14px) → 0", "460ms", "cubic-bezier(.22,.61,.36,1)"],
-  ["Stamp badge", "data-reveal, once", "rotate(-6deg) scale(.96) → rotate(-2deg) scale(1)", "380ms", "cubic-bezier(.34,1.56,.64,1)"],
-  ["Card / button", ":hover, :focus-visible", "translate(3px,3px), shadow 6px→3px", "160ms", "ease-out"],
-  ["Nav dropdown", ":hover, :focus-within", "translateY(6px) → 0, clip-path inset reveal", "180ms", "ease-out"],
-  ["Sticky mobile CTA bar", "scroll past 60vh", "translateY(100%) → 0", "240ms", "ease-out"],
-  ["MarqueeRule", "always running", "translateX(0 → -50%) loop", "32s", "linear"],
+  ["Section header + body block", "data-reveal, once", "translateY(18px) → 0, opacity .001 → 1", "620ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["Framed card / image", "data-reveal, once, 80ms stagger", "translateY(22px) → 0", "560ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["Eyebrow pill", "data-reveal, once", "translateY(8px) → 0", "420ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["Card / button", ":hover, :focus-visible", "translateY(-4px / -2px), shadow md → lg", "300ms / 200ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["Nav dropdown", ":hover, :focus-within", "translateY(8px) → 0, opacity 0 → 1", "200ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["Sticky mobile CTA bar", "scroll past 60vh", "floating pill, translateY(100% + 24px) → 0", "280ms", "cubic-bezier(.22,.61,.36,1)"],
+  ["MarqueeRule", "always running", "translateX(0 → -50%) loop", "40s", "linear"],
+  ["Hero rating chip / portrait chip", "always running", "translateY(0 → -7px) float", "6–7s", "ease-in-out"],
   ["RuledAccordion panel", "click", "grid-template-rows 0fr → 1fr", "260ms", "ease"],
-  ["Header bar", "scroll past 24px", "adds bottom rule + 4px offset shadow", "200ms", "ease"],
+  ["Header bar", "scroll past 24px", "white frosted fill, bottom rule, soft shadow", "240ms", "ease"],
 ];
 
 export default function DesignSystemPage() {
@@ -80,7 +81,7 @@ export default function DesignSystemPage() {
           <SectionHeader
             stamp="DESIGN FRAME"
             as="h1"
-            title="Warm Trades"
+            title="Stellar design system"
             lede="Every token, primitive and motion rule in one place. This route is noindex and is deleted before launch."
           />
         </Container>
@@ -158,7 +159,7 @@ export default function DesignSystemPage() {
             </div>
             <div className="btn-row">
               <StampBadge>STAMP BADGE</StampBadge>
-              <StampBadge alt>ALT ROTATION</StampBadge>
+              <StampBadge alt>ALT</StampBadge>
               <StampBadge plain>PLAIN FILL</StampBadge>
             </div>
             <div style={{ marginTop: 28, maxWidth: 420 }}>
@@ -166,7 +167,7 @@ export default function DesignSystemPage() {
                 <div style={{ padding: 24 }}>
                   <strong>Frame</strong>
                   <p className="t-small" style={{ color: "var(--ink-muted)", margin: 0 }}>
-                    2px ink border, 4px radius, 6px 6px 0 offset shadow, zero blur.
+                    1px --rule border, 20px radius, layered soft shadow; lifts 4px on hover.
                   </p>
                 </div>
               </Frame>
@@ -211,14 +212,14 @@ export default function DesignSystemPage() {
       {/* 2 — StampStrip -------------------------------------------------- */}
       <StampStrip
         label="2 — StampStrip"
-        items={["4.7★ ON GOOGLE", "53 REVIEWS", "BACKGROUND-CHECKED", "ECO-FRIENDLY", "10 CITIES"]}
+        items={["4.7★ on Google", "53 reviews", "Background-checked", "Eco-friendly", "10 cities"]}
       />
 
       {/* 3 — LedgerRows -------------------------------------------------- */}
       <LedgerRows
         stamp="LEDGER"
         title="3 — LedgerRows"
-        lede="Hairline-separated rows. Oversized mono numeral, title, description. No boxes."
+        lede="Rows inside one white panel. Numbered tint badge, title, description."
         rows={[
           { num: "01", title: "Reliability", body: "We show up on time, every time." },
           { num: "02", title: "Attention to detail", body: "Corners, baseboards, behind the door." },
@@ -231,7 +232,7 @@ export default function DesignSystemPage() {
         tone="alt"
         stamp="CARDS"
         title="4 — OffsetCardGrid"
-        lede="The card anatomy. Hover or focus a card and it translates 3px and the shadow collapses to 3px — pressed, never lifted."
+        lede="The card anatomy. Hover or focus a card and it lifts 4px onto a deeper shadow. Cards can take an optional photo across the top."
         columns={4}
         cards={[
           { title: "Commercial", body: "Offices, retail floors, medical suites.", icon: Building2, href: "#" },
@@ -353,7 +354,7 @@ export default function DesignSystemPage() {
         title="12 — OfferCards"
         offers={[
           { ribbon: "NEW CLIENT", title: "Notched corner", body: "clip-path cuts the top-right corner.", href: "#", cta: "Card CTA" },
-          { ribbon: "BEST VALUE", title: "Ribbon label", body: "Space Mono, amber fill, ink border.", href: "#", cta: "Card CTA" },
+          { ribbon: "BEST VALUE", title: "Ribbon label", body: "Tinted pill label; amber gradient top edge.", href: "#", cta: "Card CTA" },
           { ribbon: "NO OBLIGATION", title: "Third card", body: "Three-up on desktop, stacked on mobile.", href: "#", cta: "Card CTA" },
         ]}
       />
@@ -362,7 +363,7 @@ export default function DesignSystemPage() {
       <CoverageBand
         stamp="COVERAGE"
         title="13 — CoverageBand"
-        statement="Dark band. City list as stamp-style chips plus a short coverage statement."
+        statement="City grid of small linked cards with a pin icon, plus a short coverage statement."
         groups={[
           {
             label: "Willamette Valley",
@@ -396,7 +397,7 @@ export default function DesignSystemPage() {
       {/* 15 — CtaSlab -------------------------------------------------- */}
       <CtaSlab
         title="15 — CtaSlab"
-        body="Full-bleed dark band. On the dark tone the offset shadow re-points to --accent-deep so it stays visible."
+        body="Rounded dark panel inside the page gutter, with two soft amber glows."
         primary={{ href: "#", label: "Primary action", external: true }}
         secondary={{ href: "#", label: "Secondary action", external: true }}
       />
@@ -436,7 +437,7 @@ export default function DesignSystemPage() {
           <>
             <span className="footer__wordmark">16 — FooterLedger</span>
             <p className="footer__tagline">
-              Four columns with hairline dividers, collapsing to stacked below 900px.
+              Four columns on the dark tone, collapsing to stacked below 900px.
             </p>
           </>
         }

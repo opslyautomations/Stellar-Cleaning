@@ -53,6 +53,9 @@ export default function QuoteWall({
               </span>
               <blockquote className="quote__body">&ldquo;{quote.body}&rdquo;</blockquote>
               <div className="quote__foot">
+                <span className="quote__avatar" aria-hidden="true">
+                  {quote.author.trim().charAt(0).toUpperCase()}
+                </span>
                 <cite className="quote__author">{quote.author}</cite>
                 {quote.city ? <span className="quote__source">{quote.city}</span> : null}
                 <span className="quote__source">{quote.source}</span>

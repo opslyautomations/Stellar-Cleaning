@@ -1,3 +1,5 @@
+import { Sparkles } from "lucide-react";
+
 import FooterLedger from "@/components/ui/FooterLedger";
 import { AREAS, BUSINESS, MAIL_HREF, SERVICES, TEL_HREF } from "@/lib/business";
 
@@ -6,7 +8,12 @@ export default function Footer() {
     <FooterLedger
       company={
         <>
-          <span className="footer__wordmark">{BUSINESS.name}</span>
+          <span className="footer__wordmark">
+            <span className="brand-mark" aria-hidden="true">
+              <Sparkles size={20} strokeWidth={2.2} />
+            </span>
+            {BUSINESS.name}
+          </span>
           <p className="footer__tagline">
             Professional cleaning for businesses and homeowners across the Willamette Valley and
             Central Oregon.

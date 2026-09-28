@@ -5,7 +5,7 @@ import { delay, sectionClass, type Tone } from "./section";
 
 export type ProcessStep = { title: string; body: string };
 
-/** 3–4 horizontal steps, each led by an oversized outlined numeral. */
+/** 3–4 step cards, each led by a filled amber number badge. */
 export default function NumberedProcess({
   stamp,
   title,
@@ -28,7 +28,7 @@ export default function NumberedProcess({
           {steps.map((step, i) => (
             <li className="process__step" key={step.title} data-reveal="card" style={delay(i, 60)}>
               <span className="process__num" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
+                {i + 1}
               </span>
               <h3 className="process__title">{step.title}</h3>
               <p className="process__body">{step.body}</p>

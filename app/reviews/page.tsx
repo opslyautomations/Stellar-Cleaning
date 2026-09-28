@@ -36,9 +36,9 @@ export default function ReviewsPage() {
         tone="paper"
         label="Rating summary"
         items={[
-          `${BUSINESS.rating.value} ★ AVERAGE`,
-          `${BUSINESS.rating.count} GOOGLE REVIEWS`,
-          "VERIFIED ON GOOGLE",
+          `${BUSINESS.rating.value}★ average rating`,
+          `${BUSINESS.rating.count} Google reviews`,
+          "Verified on Google",
         ]}
       />
 

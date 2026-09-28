@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
+import { CheckCircle2 } from "lucide-react";
 import Container from "./Container";
 import StampBadge from "./StampBadge";
 import { sectionClass, type Tone } from "./section";
 
 /**
- * 56/44 asymmetric split. Left: stamp eyebrow, h1, lede, two CTAs.
- * Right: a framed slot — the quote form on the homepage, anything framed elsewhere.
+ * Two-column split. Left: pill eyebrow, h1, lede, two CTAs, optional
+ * checkmarked highlights. Right: a framed slot — the quote form on the
+ * homepage — with an optional floating chip over its top corner.
  *
  * Nothing in this component animates and nothing carries `data-reveal`:
  * the h1 here is the page's LCP element.
@@ -23,6 +25,8 @@ export default function SplitAnchorHero({
   variant = "hero",
   tone = "paper",
   headingLevel = "h1",
+  highlights,
+  chip,
 }: {
   eyebrow?: string;
   title?: ReactNode;
@@ -34,6 +38,10 @@ export default function SplitAnchorHero({
   variant?: "hero" | "panel";
   tone?: Tone;
   headingLevel?: "h1" | "h2";
+  /** Short reassurance lines under the CTAs, each with a check icon. */
+  highlights?: string[];
+  /** Floating card over the slot's top-right corner. */
+  chip?: ReactNode;
 }) {
   const Heading = headingLevel;
   return (
@@ -41,6 +49,12 @@ export default function SplitAnchorHero({
       className={sectionClass(tone, variant === "hero" ? "hero" : "hero hero--panel")}
       aria-label={variant === "hero" ? "Introduction" : undefined}
     >
+      {variant === "hero" ? (
+        <>
+          <div className="hero__glow" aria-hidden="true" />
+          <div className="hero__glow hero__glow--b" aria-hidden="true" />
+        </>
+      ) : null}
       <Container>
         <div className="hero__grid">
           <div>
@@ -54,10 +68,23 @@ export default function SplitAnchorHero({
             {title ? <Heading className="hero__title">{title}</Heading> : null}
             {lede ? <p className="hero__lede">{lede}</p> : null}
             {actions ? <div className="btn-row">{actions}</div> : null}
+            {highlights?.length ? (
+              <ul className="hero__highlights">
+                {highlights.map((item) => (
+                  <li key={item}>
+                    <CheckCircle2 size={18} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
               </>
             )}
           </div>
-          <div className="hero__slot">{slot}</div>
+          <div className="hero__slot">
+            {chip ? <div className="hero__chip">{chip}</div> : null}
+            {slot}
+          </div>
         </div>
       </Container>
     </section>
