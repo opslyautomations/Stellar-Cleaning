@@ -68,46 +68,143 @@ export const SERVICE_IMAGES: Record<string, SiteImage> = {
   },
 };
 
-export const AREA_IMAGES: Record<string, SiteImage> = {
+export type PhotoCredit = {
+  author: string;
+  license: string;
+  /** Null for public-domain images. */
+  licenseUrl: string | null;
+  sourceUrl: string;
+};
+
+export type CityImage = SiteImage & { credit: PhotoCredit };
+
+/**
+ * Real photographs of each city, taken from Wikimedia Commons (the lead image
+ * of each city's Wikipedia article, except Eugene, where a skyline replaced a
+ * football-game photo). Nine are Creative Commons licensed and require
+ * attribution; every one is credited on /credits and under its photo on the
+ * area page. Stored locally at 1280px so next/image can optimise them.
+ */
+export const CITY_IMAGES: Record<string, CityImage> = {
   corvallis: {
-    ...unsplash("photo-1522708323590-d24dbb6b0267", "landscape"),
-    alt: "A bright apartment living and dining area with afternoon light across the floor.",
+    src: "/images/cities/corvallis.jpg",
+    width: 1280,
+    height: 853,
+    alt: "The white Benton County Courthouse and its clock tower in downtown Corvallis under a clear blue sky.",
+    credit: {
+      author: "Gregkeene",
+      license: "CC BY 3.0 US",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Benton_County_Courthouse_Greg_Keene.jpg",
+    },
   },
   albany: {
-    ...unsplash("photo-1584622781564-1d987f7333c1", "landscape"),
-    alt: "A living room with original wood flooring, a fireplace and neutral furnishings.",
+    src: "/images/cities/albany.jpg",
+    width: 1280,
+    height: 714,
+    alt: "First Avenue in downtown Albany, looking west past historic brick storefronts on a summer day.",
+    credit: {
+      author: "Edfallere",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Albany,_Oregon_looking_west_down_1st_Ave_SW_in_the_summer_of_2014.jpg",
+    },
   },
   lebanon: {
-    ...unsplash("photo-1533090161767-e6ffed986c88", "landscape"),
-    alt: "A spare white interior wall with a wall clock, a small plant and a desk lamp.",
+    src: "/images/cities/lebanon.jpg",
+    width: 1280,
+    height: 782,
+    alt: "The restored yellow Southern Pacific railroad depot in Lebanon.",
+    credit: {
+      author: "46percent",
+      license: "Public domain",
+      licenseUrl: null,
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Lebanon_Southern_Pacific_Railroad_Depot.jpg",
+    },
   },
   philomath: {
-    ...unsplash("photo-1600566753086-00f18fb6b3ea", "landscape"),
-    alt: "A family living room with a staircase behind it and a dog resting on the rug.",
+    src: "/images/cities/philomath.jpg",
+    width: 1280,
+    height: 850,
+    alt: "The red-brick Benton County Historical Museum in Philomath, with its white cupola.",
+    credit: {
+      author: "Finetooth",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Benton_County_Historical_Museum.jpg",
+    },
   },
   salem: {
-    ...unsplash("photo-1571624436279-b272aff752b5", "landscape"),
-    alt: "A meeting room with leather chairs around a long table in a professional office.",
+    src: "/images/cities/salem.jpg",
+    width: 1280,
+    height: 834,
+    alt: "Downtown Salem seen from the top of the Oregon State Capitol, with tree-lined streets and hills beyond.",
+    credit: {
+      author: "M.O. Stevens",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Salem_Oregon_downtown.JPG",
+    },
   },
   eugene: {
-    ...unsplash("photo-1568992687947-868a62a9f521", "landscape"),
-    alt: "People working at a long shared table in a mixed-use commercial space.",
+    src: "/images/cities/eugene.jpg",
+    width: 1280,
+    height: 934,
+    alt: "The downtown Eugene skyline with Spencer Butte behind it, seen from Skinner Butte.",
+    credit: {
+      author: "Jsayre64",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Eugene_skyline.jpg",
+    },
   },
   springfield: {
-    ...unsplash("photo-1607472586893-edb57bdc0e39", "landscape"),
-    alt: "Industrial pipework and valves running along a brick wall inside a facility.",
+    src: "/images/cities/springfield.jpg",
+    width: 1280,
+    height: 719,
+    alt: "Main Street in downtown Springfield, lined with trees and historic storefronts.",
+    credit: {
+      author: "AnthonyTheGuy",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Main_Street,_Downtown_Springfield,_Oregon,_22_September_2026.jpg",
+    },
   },
   bend: {
-    ...unsplash("photo-1590490360182-c33d57733427", "landscape"),
-    alt: "A made-up guest bedroom with layered bedding and lamps on both bedside tables.",
+    src: "/images/cities/bend.jpg",
+    width: 1280,
+    height: 960,
+    alt: "A downtown Bend street with the Tower Theatre sign, hanging flower baskets and a bronze bench statue.",
+    credit: {
+      author: "David Wilson",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:20210803_03_Bend,_Oregon.jpg",
+    },
   },
   prineville: {
-    ...unsplash("photo-1554995207-c18c203602cb", "landscape"),
-    alt: "An open-plan living space with a leather sofa and a painted accent wall.",
+    src: "/images/cities/prineville.jpg",
+    width: 1280,
+    height: 850,
+    alt: "Downtown Prineville from the Ochoco State Scenic Viewpoint, with the county courthouse at its centre.",
+    credit: {
+      author: "SounderBruce",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Prineville,_OR_from_Ochoco_State_Scenic_Viewpoint,_April_2025.jpg",
+    },
   },
   redmond: {
-    ...unsplash("photo-1613545325278-f24b0cae1224", "landscape"),
-    alt: "A newly finished double-height living area with large windows and pale floors.",
+    src: "/images/cities/redmond.jpg",
+    width: 1280,
+    height: 960,
+    alt: "Business Highway 97 through downtown Redmond, passing under the city's decorative welcome arch.",
+    credit: {
+      author: "Doug Kerr",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Redmond,_Oregon,_Business_Hwy_97.jpg",
+    },
   },
 };
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
 import FooterLedger from "@/components/ui/FooterLedger";
@@ -70,7 +71,12 @@ export default function Footer() {
           ],
         },
       ]}
-      bottomLeft={`© ${new Date().getFullYear()} ${BUSINESS.legalName}. All rights reserved.`}
+      bottomLeft={
+        <>
+          © {new Date().getFullYear()} {BUSINESS.legalName}. All rights reserved. ·{" "}
+          <Link href="/credits">Photo credits</Link>
+        </>
+      }
       bottomRight={
         <a href={BUSINESS.credit.href} target="_blank" rel="noopener noreferrer">
           {BUSINESS.credit.label}

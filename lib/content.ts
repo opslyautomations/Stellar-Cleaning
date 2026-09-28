@@ -4,6 +4,7 @@ import type { Offer } from "@/components/ui/OfferCards";
 import type { CoverageGroup } from "@/components/ui/CoverageBand";
 import type { IndexGroup } from "@/components/ui/IndexColumns";
 import { AREAS, REGIONS, SERVICES, areasByRegion } from "./business";
+import { CITY_IMAGES } from "./images";
 
 /**
  * The four service cards, written once.
@@ -128,6 +129,7 @@ export function coverageGroups(): CoverageGroup[] {
     items: areasByRegion(region).map((area) => ({
       href: `/areas/${area.slug}`,
       label: area.name,
+      image: CITY_IMAGES[area.slug],
     })),
   }));
 }

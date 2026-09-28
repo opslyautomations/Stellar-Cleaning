@@ -14,7 +14,7 @@ import PortraitAside from "@/components/ui/PortraitAside";
 import { AREAS, CALL_LABEL, TEL_HREF, areaBySlug } from "@/lib/business";
 import { AREA_NOTES, SERVICE_CARDS } from "@/lib/content";
 import { AREA_CONTENT } from "@/lib/areas-content";
-import { AREA_IMAGES } from "@/lib/images";
+import { CITY_IMAGES } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { pageSeo } from "@/lib/seo-content";
@@ -61,7 +61,8 @@ export default async function AreaPage(props: { params: Promise<{ slug: string }
       stamp={area.region.toUpperCase()}
       title={content.introTitle}
       body={content.introBody}
-      image={{ ...AREA_IMAGES[slug], priority: true }}
+      image={{ ...CITY_IMAGES[slug], priority: true }}
+      credit={CITY_IMAGES[slug].credit}
     />
   );
 
