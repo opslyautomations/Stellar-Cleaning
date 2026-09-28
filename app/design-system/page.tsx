@@ -32,23 +32,23 @@ export const metadata: Metadata = {
 };
 
 const TOKENS = [
-  { name: "--paper", hex: "#FAF6F0", note: "Page base, warm off-white" },
-  { name: "--paper-alt", hex: "#F1E9DE", note: "Alternating section band" },
+  { name: "--paper", hex: "#F5FAFD", note: "Page base, cool off-white" },
+  { name: "--paper-alt", hex: "#E4F1F9", note: "Alternating section band" },
   { name: "--surface", hex: "#FFFFFF", note: "Card face" },
-  { name: "--ink", hex: "#1A1614", note: "Primary text — 17:1 on paper" },
-  { name: "--ink-muted", hex: "#6B5F57", note: "Secondary text — 5.7:1 on paper" },
-  { name: "--deep", hex: "#2A2320", note: "Footer, marquee, CTA panel" },
-  { name: "--accent", hex: "#F59E0B", note: "FILL ONLY — never text on light" },
-  { name: "--accent-deep", hex: "#B45309", note: "Accent text/links — 4.7:1 on paper" },
-  { name: "--rule", hex: "#E0D5C6", note: "Hairlines and borders" },
+  { name: "--ink", hex: "#0F2433", note: "Primary text — 15:1 on paper" },
+  { name: "--ink-muted", hex: "#4F6475", note: "Secondary text — 5.9:1 on paper" },
+  { name: "--deep", hex: "#0D2B42", note: "Footer, marquee, CTA panel" },
+  { name: "--accent", hex: "#55B0E0", note: "FILL ONLY — never text on light" },
+  { name: "--accent-deep", hex: "#1667A0", note: "Accent text/links — 5.7:1 on paper" },
+  { name: "--rule", hex: "#D3E5F0", note: "Hairlines and borders" },
 ];
 
 const CONTRAST = [
-  ["--ink on --paper", "17:1", "All body text"],
-  ["--ink-muted on --paper", "5.7:1", "Secondary text, captions"],
-  ["--accent-deep on --paper", "4.7:1", "Link text, accent headings"],
-  ["--ink on --accent", "8.2:1", "Primary buttons, number badges"],
-  ["--paper on --deep", "14.4:1", "Text in dark bands"],
+  ["--ink on --paper", "15:1", "All body text"],
+  ["--ink-muted on --paper", "5.9:1", "Secondary text, captions"],
+  ["--accent-deep on --paper", "5.7:1", "Link text, accent headings"],
+  ["--ink on --accent", "6.6:1", "Primary buttons, number badges"],
+  ["--paper on --deep", "13.9:1", "Text in dark bands"],
 ];
 
 const SCALE = [
@@ -354,7 +354,7 @@ export default function DesignSystemPage() {
         title="12 — OfferCards"
         offers={[
           { ribbon: "NEW CLIENT", title: "Notched corner", body: "clip-path cuts the top-right corner.", href: "#", cta: "Card CTA" },
-          { ribbon: "BEST VALUE", title: "Ribbon label", body: "Tinted pill label; amber gradient top edge.", href: "#", cta: "Card CTA" },
+          { ribbon: "BEST VALUE", title: "Ribbon label", body: "Tinted pill label; sky-blue gradient top edge.", href: "#", cta: "Card CTA" },
           { ribbon: "NO OBLIGATION", title: "Third card", body: "Three-up on desktop, stacked on mobile.", href: "#", cta: "Card CTA" },
         ]}
       />
@@ -397,7 +397,7 @@ export default function DesignSystemPage() {
       {/* 15 — CtaSlab -------------------------------------------------- */}
       <CtaSlab
         title="15 — CtaSlab"
-        body="Rounded dark panel inside the page gutter, with two soft amber glows."
+        body="Rounded dark panel inside the page gutter, with two soft sky-blue glows."
         primary={{ href: "#", label: "Primary action", external: true }}
         secondary={{ href: "#", label: "Secondary action", external: true }}
       />

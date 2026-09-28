@@ -19,7 +19,7 @@ oversized h1 treatment and is not a hero.
 
 | # | Component | Shape |
 |---|---|---|
-| 1 | `SplitAnchorHero` | Two-column hero over soft amber glows; pill eyebrow, h1, lede, CTAs, check highlights left; framed slot with floating chip right |
+| 1 | `SplitAnchorHero` | Two-column hero over soft sky-blue glows; pill eyebrow, h1, lede, CTAs, check highlights left; framed slot with floating chip right |
 | 2 | `StampStrip` | White trust bar: 3–5 proof points with check icons, divided columns; 2-up on mobile |
 | 3 | `LedgerRows` | Rows inside one white rounded panel: tint number badge, title, description |
 | 4 | `OffsetCardGrid` | 2/3/4 column grid of the card anatomy; optional photo, icon, title, copy, optional link |
@@ -29,8 +29,8 @@ oversized h1 treatment and is not a hero.
 | 8 | `ChecklistSlab` | Two-column list of small white cards, tint circle check marker per item |
 | 9 | `QuoteWall` | Review cards, varied spans in a 6-col grid (`pair` variant for two quotes) |
 | 10 | `MarqueeRule` | Thin full-bleed dark strip with looping uppercase text |
-| 11 | `NumberedProcess` | 3–4 step cards, each led by a filled amber number badge |
-| 12 | `OfferCards` | Promo cards with an amber gradient top edge and tint ribbon label |
+| 11 | `NumberedProcess` | 3–4 step cards, each led by a filled sky-blue number badge |
+| 12 | `OfferCards` | Promo cards with an sky-blue gradient top edge and tint ribbon label |
 | 13 | `CoverageBand` | City grid of linked pin cards grouped by region, plus a coverage statement |
 | 14 | `RuledAccordion` | Stacked white `<details>` cards, round `+`/`−` glyph, 0fr→1fr panel |
 | 15 | `CtaSlab` | Rounded dark panel inside the gutter; centred h2, one line, click-to-call plus secondary |
@@ -44,7 +44,7 @@ it. It introduces no new styling — the border, radius and offset shadow are th
 
 ## Support primitives
 
-`Button` (`primary` amber fill / `secondary` paper fill / `ghost` underline only),
+`Button` (`primary` sky-blue fill / `secondary` paper fill / `ghost` underline only),
 `StampBadge`, `Frame`, `SectionHeader`, `Rule`, `Container`.
 
 `section.ts` is not a component. It returns the band-tone class (`paper` /
@@ -63,6 +63,6 @@ component paints the same three tones.
 - Borders are 1px `--rule`. No 2px ink outlines.
 - Interactive surfaces lift on hover (`translateY(-2px)` buttons,
   `-4px` cards) and never on reduced motion.
-- `--accent` (`#F59E0B`) is a **fill only**. Accent text on a light background is
-  `--accent-deep` (`#B45309`). Primary buttons are amber with `--ink` text.
+- `--accent` (`#55B0E0`) is a **fill only**. Accent text on a light background is
+  `--accent-deep` (`#1667A0`). Primary buttons are sky-blue with `--ink` text.
 - No dark mode. No animation library. No component library.

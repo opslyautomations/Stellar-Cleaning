@@ -5,7 +5,7 @@ import { delay, sectionClass, type Tone } from "./section";
 
 export type ProcessStep = { title: string; body: string };
 
-/** 3–4 step cards, each led by a filled amber number badge. */
+/** 3–4 step cards, each led by a filled sky-blue number badge. */
 export default function NumberedProcess({
   stamp,
   title,

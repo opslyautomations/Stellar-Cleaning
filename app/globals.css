@@ -84,31 +84,31 @@ img, video {
 
 /* =========================================================================
    STELLAR CLEANING SOLUTIONS — DESIGN SYSTEM
-   Palette unchanged from the original build. Geometry, elevation and type
+   Palette matched to the Stellar logo blue (#55B0E0). Geometry, elevation and type
    treatment follow a soft, rounded, card-led service-site layout.
    Light mode only.
    ========================================================================= */
 
 :root {
   /* --- Color tokens (nine, exact) --- */
-  --paper:       #FAF6F0;
-  --paper-alt:   #F1E9DE;
+  --paper:       #F5FAFD;
+  --paper-alt:   #E4F1F9;
   --surface:     #FFFFFF;
-  --ink:         #1A1614;
-  --ink-muted:   #6B5F57;
-  --deep:        #2A2320;
-  --accent:      #F59E0B;
-  --accent-deep: #B45309;
-  --rule:        #E0D5C6;
+  --ink:         #0F2433;
+  --ink-muted:   #4F6475;
+  --deep:        #0D2B42;
+  --accent:      #55B0E0;
+  --accent-deep: #1667A0;
+  --rule:        #D3E5F0;
 
   /* Tints of the tokens above — no new hue is introduced. */
-  --accent-tint: #FEF3DF;   /* --accent at ~12% on --surface */
-  --accent-ring: rgba(245, 158, 11, 0.38);
-  --rule-strong: #D3C5B2;
+  --accent-tint: #E6F4FC;   /* --accent at ~12% on --surface */
+  --accent-ring: rgba(85, 176, 224, 0.38);
+  --rule-strong: #B7D2E4;
 
   /* Form state colors — no fifth hue is introduced. */
   --state-ok:    var(--accent-deep);
-  --state-error: #9A3412;
+  --state-error: #B42318;
 
   /* --- Type scale --- */
   --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);
@@ -127,11 +127,11 @@ img, video {
   --radius-xl: 28px;
   --sect-y: clamp(64px, 8vw, 112px);
 
-  /* --- Elevation. Warm-ink shadows, layered, always soft. --- */
-  --shadow-sm: 0 1px 2px rgba(26, 22, 20, 0.06), 0 6px 14px -6px rgba(26, 22, 20, 0.12);
-  --shadow-md: 0 2px 4px rgba(26, 22, 20, 0.05), 0 16px 36px -14px rgba(26, 22, 20, 0.24);
-  --shadow-lg: 0 4px 10px rgba(26, 22, 20, 0.05), 0 30px 60px -22px rgba(26, 22, 20, 0.32);
-  --shadow-accent: 0 10px 24px -10px rgba(217, 119, 6, 0.60);
+  /* --- Elevation. Navy-ink shadows, layered, always soft. --- */
+  --shadow-sm: 0 1px 2px rgba(15, 36, 51, 0.06), 0 6px 14px -6px rgba(15, 36, 51, 0.12);
+  --shadow-md: 0 2px 4px rgba(15, 36, 51, 0.05), 0 16px 36px -14px rgba(15, 36, 51, 0.24);
+  --shadow-lg: 0 4px 10px rgba(15, 36, 51, 0.05), 0 30px 60px -22px rgba(15, 36, 51, 0.32);
+  --shadow-accent: 0 10px 24px -10px rgba(43, 140, 196, 0.60);
 
   /* --- Easing --- */
   --ease-snap: cubic-bezier(.22, .61, .36, 1);
@@ -238,19 +238,19 @@ ul, ol { margin: 0; padding: 0; }
   padding-block: var(--sect-y);
 }
 /* Light bands carry two faint washes — a --paper-alt pool top-right and a
-   whisper of amber bottom-left — so large areas never read as flat. */
+   whisper of sky blue bottom-left — so large areas never read as flat. */
 .sect--paper {
   background:
-    radial-gradient(64rem 34rem at 100% 0%, rgba(241, 233, 222, 0.85), rgba(241, 233, 222, 0) 62%),
-    radial-gradient(48rem 28rem at 0% 100%, rgba(245, 158, 11, 0.045), rgba(245, 158, 11, 0) 62%);
+    radial-gradient(64rem 34rem at 100% 0%, rgba(228, 241, 249, 0.85), rgba(228, 241, 249, 0) 62%),
+    radial-gradient(48rem 28rem at 0% 100%, rgba(85, 176, 224, 0.045), rgba(85, 176, 224, 0) 62%);
 }
 /* Tan bands: a slightly deeper top edge fading down, a faint dot texture and
    inset hairlines top and bottom, so each band reads as a recessed layer. */
 .sect--alt {
   background:
-    radial-gradient(rgba(107, 95, 87, 0.11) 1px, transparent 1.4px) 0 0 / 22px 22px,
-    linear-gradient(180deg, #ECE1D2 0%, var(--paper-alt) 38%, #F4EDE4 100%);
-  box-shadow: inset 0 1px 0 rgba(26, 22, 20, 0.06), inset 0 -1px 0 rgba(26, 22, 20, 0.05);
+    radial-gradient(rgba(79, 100, 117, 0.11) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    linear-gradient(180deg, #D8EAF5 0%, var(--paper-alt) 38%, #EDF5FB 100%);
+  box-shadow: inset 0 1px 0 rgba(15, 36, 51, 0.06), inset 0 -1px 0 rgba(15, 36, 51, 0.05);
 }
 .sect--deep  { background: var(--deep); color: var(--paper); }
 .sect--deep h1, .sect--deep h2, .sect--deep h3, .sect--deep h4,
@@ -273,7 +273,7 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--rule);
 }
 
-/* --accent-deep is certified at 4.66:1 on --paper. On the --paper-alt band it
+/* --accent-deep is certified at 5.7:1 on --paper. On the --paper-alt band it
    drops to 4.17:1, which clears AA for large text but not for normal text, so
    small accent labels and ghost links on that band use --ink instead. Labels
    inside white cards are unaffected — they sit on --surface. */
@@ -322,10 +322,10 @@ ul, ol { margin: 0; padding: 0; }
 .stamp--plain::before { background: var(--accent-deep); }
 .tone--deep .stamp {
   color: var(--accent);
-  background: rgba(250, 246, 240, 0.06);
-  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.35);
+  background: rgba(245, 250, 253, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(85, 176, 224, 0.35);
 }
-.tone--deep .stamp::before { box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18); }
+.tone--deep .stamp::before { box-shadow: 0 0 0 3px rgba(85, 176, 224, 0.18); }
 
 /* Frame ----------------------------------------------------------------- */
 .frame {
@@ -366,8 +366,8 @@ ul, ol { margin: 0; padding: 0; }
   box-shadow: var(--shadow-accent);
 }
 .btn--primary:hover, .btn--primary:focus-visible {
-  background: #F8A824;
-  box-shadow: 0 16px 30px -12px rgba(217, 119, 6, 0.70);
+  background: #6BBDE8;
+  box-shadow: 0 16px 30px -12px rgba(43, 140, 196, 0.70);
 }
 .btn--secondary { background: rgba(255, 255, 255, 0.8); }
 .btn--secondary:hover, .btn--secondary:focus-visible {
@@ -376,14 +376,14 @@ ul, ol { margin: 0; padding: 0; }
   box-shadow: var(--shadow-md);
 }
 .tone--deep .btn--secondary {
-  background: rgba(250, 246, 240, 0.06);
-  border-color: rgba(250, 246, 240, 0.28);
+  background: rgba(245, 250, 253, 0.06);
+  border-color: rgba(245, 250, 253, 0.28);
   color: var(--paper);
   box-shadow: none;
 }
 .tone--deep .btn--secondary:hover, .tone--deep .btn--secondary:focus-visible {
-  background: rgba(250, 246, 240, 0.12);
-  border-color: rgba(250, 246, 240, 0.5);
+  background: rgba(245, 250, 253, 0.12);
+  border-color: rgba(245, 250, 253, 0.5);
 }
 .btn--ghost {
   border: 0;
@@ -448,9 +448,9 @@ ul, ol { margin: 0; padding: 0; }
   padding-block: clamp(56px, 7vw, 104px);
   overflow: hidden;
   background:
-    radial-gradient(40rem 22rem at 88% 0%, rgba(245, 158, 11, 0.18), transparent 70%),
-    radial-gradient(rgba(107, 95, 87, 0.11) 1px, transparent 1.4px) 0 0 / 22px 22px,
-    linear-gradient(180deg, #ECE1D2 0%, var(--paper-alt) 55%, #F4EDE4 100%);
+    radial-gradient(40rem 22rem at 88% 0%, rgba(85, 176, 224, 0.18), transparent 70%),
+    radial-gradient(rgba(79, 100, 117, 0.11) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    linear-gradient(180deg, #D8EAF5 0%, var(--paper-alt) 55%, #EDF5FB 100%);
 }
 .page-header .section-header { margin-bottom: 0; position: relative; }
 /* The page-header eyebrow keeps its pill. */
@@ -485,14 +485,14 @@ ul, ol { margin: 0; padding: 0; }
   width: 40rem;
   height: 40rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.22), rgba(245, 158, 11, 0) 65%);
+  background: radial-gradient(circle, rgba(85, 176, 224, 0.22), rgba(85, 176, 224, 0) 65%);
 }
 .hero__glow--b {
   right: auto;
   left: -16rem;
   top: auto;
   bottom: -20rem;
-  background: radial-gradient(circle, rgba(241, 233, 222, 0.95), rgba(241, 233, 222, 0) 65%);
+  background: radial-gradient(circle, rgba(228, 241, 249, 0.95), rgba(228, 241, 249, 0) 65%);
 }
 .hero__grid {
   position: relative;
@@ -539,7 +539,7 @@ ul, ol { margin: 0; padding: 0; }
   padding: 10px 16px 10px 12px;
   background: var(--surface);
   border-radius: 16px;
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(26, 22, 20, 0.04);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(15, 36, 51, 0.04);
   font-size: var(--step--1);
   line-height: 1.25;
 }
@@ -614,7 +614,7 @@ ul, ol { margin: 0; padding: 0; }
   transition: background-color 200ms ease;
 }
 .ledger__row + .ledger__row { border-top: 1px solid var(--rule); }
-.ledger__row:hover { background: #FFFCF7; }
+.ledger__row:hover { background: #FBFDFF; }
 @media (min-width: 760px) {
   .ledger__row { grid-template-columns: 52px minmax(0, 18ch) minmax(0, 1fr); align-items: center; }
 }
@@ -1063,7 +1063,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 .process__title { font-size: var(--step-1); margin: 0; }
 .process__body { color: var(--ink-muted); margin: 0; }
-.sect--deep .process__step { background: rgba(250, 246, 240, 0.05); border-color: rgba(250, 246, 240, 0.12); }
+.sect--deep .process__step { background: rgba(245, 250, 253, 0.05); border-color: rgba(245, 250, 253, 0.12); }
 .sect--deep .process__body { color: var(--paper); opacity: .8; }
 
 /* ====================== 12. OfferCards =================================== */
@@ -1194,7 +1194,7 @@ ul, ol { margin: 0; padding: 0; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(26, 22, 20, 0.82) 0%, rgba(26, 22, 20, 0.2) 45%, rgba(26, 22, 20, 0) 70%);
+  background: linear-gradient(to top, rgba(15, 36, 51, 0.82) 0%, rgba(15, 36, 51, 0.2) 45%, rgba(15, 36, 51, 0) 70%);
   pointer-events: none;
 }
 .coverage__tile-label {
@@ -1301,12 +1301,12 @@ ul, ol { margin: 0; padding: 0; }
 .cta-panel::before {
   width: 34rem; height: 34rem;
   right: -12rem; top: -18rem;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.30), rgba(245, 158, 11, 0) 65%);
+  background: radial-gradient(circle, rgba(85, 176, 224, 0.30), rgba(85, 176, 224, 0) 65%);
 }
 .cta-panel::after {
   width: 28rem; height: 28rem;
   left: -12rem; bottom: -16rem;
-  background: radial-gradient(circle, rgba(180, 83, 9, 0.30), rgba(180, 83, 9, 0) 65%);
+  background: radial-gradient(circle, rgba(22, 103, 160, 0.30), rgba(22, 103, 160, 0) 65%);
 }
 .cta-slab__inner { max-width: 40rem; margin-inline: auto; }
 .cta-slab__inner h2 { color: var(--paper); }
@@ -1315,7 +1315,7 @@ ul, ol { margin: 0; padding: 0; }
 
 /* ====================== 16. FooterLedger ================================= */
 .footer { background: var(--deep); color: var(--paper); margin-top: 0; }
-.footer a { color: rgba(250, 246, 240, 0.78); text-decoration: none; transition: color 160ms ease; }
+.footer a { color: rgba(245, 250, 253, 0.78); text-decoration: none; transition: color 160ms ease; }
 .footer a:hover, .footer a:focus-visible { color: var(--paper); }
 .footer__grid {
   display: grid;
@@ -1351,7 +1351,7 @@ ul, ol { margin: 0; padding: 0; }
 .footer__meta dd { margin: 0 0 8px; opacity: .85; }
 .footer__subgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
 .footer__bar {
-  border-top: 1px solid rgba(250, 246, 240, 0.12);
+  border-top: 1px solid rgba(245, 250, 253, 0.12);
   padding-block: 22px;
   display: flex;
   flex-wrap: wrap;
@@ -1366,7 +1366,7 @@ ul, ol { margin: 0; padding: 0; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 246, 240, 0.9);
+  background: rgba(245, 250, 253, 0.9);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   backdrop-filter: saturate(1.4) blur(14px);
   transition: box-shadow 240ms ease, border-color 240ms ease, background-color 240ms ease;
@@ -1375,7 +1375,7 @@ ul, ol { margin: 0; padding: 0; }
 .header[data-stuck="true"] {
   background: rgba(255, 255, 255, 0.92);
   border-bottom-color: var(--rule);
-  box-shadow: 0 10px 30px -18px rgba(26, 22, 20, 0.25);
+  box-shadow: 0 10px 30px -18px rgba(15, 36, 51, 0.25);
 }
 .header__bar {
   display: flex;
@@ -1399,11 +1399,8 @@ ul, ol { margin: 0; padding: 0; }
 }
 .header__wordmark-text { max-width: 12ch; }
 .brand-mark {
-  width: 40px; height: 40px;
-  display: grid; place-items: center;
+  width: 48px; height: 48px;
   border-radius: 12px;
-  background: var(--accent);
-  color: var(--ink);
   box-shadow: var(--shadow-accent);
   flex: none;
 }
@@ -1426,7 +1423,7 @@ ul, ol { margin: 0; padding: 0; }
   white-space: nowrap;
   transition: color 160ms ease, background-color 160ms ease;
 }
-.header__link:hover { color: var(--accent-deep); background: rgba(245, 158, 11, 0.08); }
+.header__link:hover { color: var(--accent-deep); background: rgba(85, 176, 224, 0.08); }
 .header__link[aria-current="page"] { color: var(--accent-deep); font-weight: 600; }
 .header__link[aria-current="page"]::after {
   content: "";
@@ -1613,7 +1610,7 @@ body { padding-bottom: 0; }
   padding-top: clamp(30px, 3vw, 36px);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(224, 213, 198, 0.7);
+  border-color: rgba(211, 229, 240, 0.7);
 }
 .ghl__heading { font-size: var(--step-2); margin-bottom: 4px; }
 .ghl__sub { color: var(--ink-muted); font-size: var(--step--1); margin-bottom: 14px; }

@@ -41,7 +41,7 @@ export async function GET(
           height: "630px",
           display: "flex",
           padding: "24px",
-          backgroundColor: "#FAF6F0",
+          backgroundColor: "#F5FAFD",
         }}
       >
         <div
@@ -51,7 +51,7 @@ export async function GET(
             justifyContent: "space-between",
             width: "100%",
             height: "100%",
-            border: "12px solid #1A1614",
+            border: "12px solid #0F2433",
             padding: "52px 56px",
           }}
         >
@@ -59,15 +59,15 @@ export async function GET(
             <div
               style={{
                 display: "flex",
-                backgroundColor: "#F59E0B",
-                border: "4px solid #1A1614",
+                backgroundColor: "#55B0E0",
+                border: "4px solid #0F2433",
                 borderRadius: "999px",
                 padding: "8px 22px",
                 transform: "rotate(-2deg)",
                 fontFamily: "Space Mono",
                 fontSize: "26px",
                 letterSpacing: "3px",
-                color: "#1A1614",
+                color: "#0F2433",
               }}
             >
               {seo.ogKicker}
@@ -81,7 +81,7 @@ export async function GET(
               fontSize: seo.ogTitle.length > 42 ? "66px" : "78px",
               lineHeight: 1.04,
               letterSpacing: "-2px",
-              color: "#1A1614",
+              color: "#0F2433",
               maxWidth: "980px",
             }}
           >
@@ -96,13 +96,13 @@ export async function GET(
               fontFamily: "Space Mono",
               fontSize: "25px",
               letterSpacing: "2px",
-              color: "#1A1614",
-              borderTop: "3px solid #E0D5C6",
+              color: "#0F2433",
+              borderTop: "3px solid #D3E5F0",
               paddingTop: "22px",
             }}
           >
             <div style={{ display: "flex" }}>STELLAR CLEANING SOLUTIONS</div>
-            <div style={{ display: "flex", color: "#B45309" }}>{BUSINESS.phone}</div>
+            <div style={{ display: "flex", color: "#1667A0" }}>{BUSINESS.phone}</div>
           </div>
         </div>
       </div>

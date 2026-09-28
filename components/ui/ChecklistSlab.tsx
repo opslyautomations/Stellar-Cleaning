@@ -6,7 +6,7 @@ import { delay, sectionClass, type Tone } from "./section";
 
 export type ChecklistItem = { title: string; note?: string };
 
-/** Full-width band, two-column list, amber square check marker per item. */
+/** Full-width band, two-column list, sky-blue square check marker per item. */
 export default function ChecklistSlab({
   stamp,
   title,
