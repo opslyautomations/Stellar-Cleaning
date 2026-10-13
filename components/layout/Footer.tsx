@@ -64,7 +64,7 @@ export default function Footer() {
             { href: "/about", label: "About" },
             { href: "/reviews", label: "Reviews" },
             { href: "/gallery", label: "Gallery" },
-            { href: "/specials", label: "Specials" },
+            { href: "/blog", label: "Blog" },
             { href: "/contact", label: "Contact" },
           ],
         },

@@ -1,6 +1,6 @@
 # Stellar component catalog
 
-Sixteen catalog components and six support primitives. Every page on this site is
+Eighteen catalog components and six support primitives. Every page on this site is
 assembled from these and nothing else. If a page needs a new visual pattern, the
 pattern is added here and to `/design-system` first — never inline on the page.
 
@@ -36,11 +36,17 @@ oversized h1 treatment and is not a hero.
 | 15 | `CtaSlab` | Rounded dark panel inside the gutter; centred h2, one line, click-to-call plus secondary |
 | 16 | `FooterLedger` | Four-column dark footer |
 | 17 | `FramedGallery` | Six-column image wall at mixed aspect ratios, every image in a `Frame` |
+| 18 | `ArticleBody` | Long-form prose on a white card (70ch measure) with a sticky aside: numbered contents list plus a dark estimate card |
 
 `FramedGallery` was added in Prompt 05 for `/gallery`, following the rule above:
 the pattern went into the catalog and onto `/design-system` before the page used
 it. It introduces no new styling — the border, radius and offset shadow are the
 `Frame` primitive's.
+
+`ArticleBody` was added for the blog (`/blog/[slug]`), again catalog-first. It
+renders the parsed Markdown blocks from `lib/blog.ts`; the post's FAQ section
+is not part of it — that renders through `RuledAccordion` so it can be mirrored
+into FAQPage schema exactly as the service pages do.
 
 ## Support primitives
 

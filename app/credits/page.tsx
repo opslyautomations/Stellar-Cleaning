@@ -4,7 +4,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/ui/Container";
 
 import { AREAS } from "@/lib/business";
-import { CITY_IMAGES } from "@/lib/images";
+import { ABOUT_BUSINESS, CITY_IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Photo credits | Stellar Cleaning Solutions",
@@ -27,11 +27,13 @@ export default function CreditsPage() {
       <section className="sect sect--paper">
         <Container>
           <dl className="details-list">
-            {AREAS.map((area) => {
-              const { credit } = CITY_IMAGES[area.slug];
+            {[
+              ...AREAS.map((area) => ({ key: area.slug, label: area.name, credit: CITY_IMAGES[area.slug].credit })),
+              { key: "about", label: "About page", credit: ABOUT_BUSINESS.credit },
+            ].map(({ key, label, credit }) => {
               return (
-                <div className="details-list__row" key={area.slug}>
-                  <dt>{area.name}</dt>
+                <div className="details-list__row" key={key}>
+                  <dt>{label}</dt>
                   <dd>
                     <a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer">
                       Photo by {credit.author}

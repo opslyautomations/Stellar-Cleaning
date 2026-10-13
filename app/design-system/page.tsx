@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Briefcase, Building2, ClipboardCheck, Home, Phone } from "lucide-react";
 
 import Button from "@/components/ui/Button";
+import ArticleBody from "@/components/ui/ArticleBody";
 import ChecklistSlab from "@/components/ui/ChecklistSlab";
 import Container from "@/components/ui/Container";
 import CoverageBand from "@/components/ui/CoverageBand";
@@ -328,6 +329,40 @@ export default function DesignSystemPage() {
         lede="Six-column wall at mixed aspect ratios. Spans of 2, 3 and 4 with 4:3, 1:1 and 3:4 crops, so the grid is deliberately uneven."
         images={GALLERY.slice(0, 6)}
         priorityIndex={-1}
+      />
+
+      {/* 18 — ArticleBody ---------------------------------------------------- */}
+      <ArticleBody
+        meta={["October 12, 2026", "6 min read", "Corvallis, Albany"]}
+        blocks={[
+          { kind: "h2", id: "ds-article-one", text: "18 — ArticleBody" },
+          {
+            kind: "p",
+            content: [
+              { kind: "text", text: "Long-form prose on a white card at a 70ch measure, with " },
+              { kind: "strong", text: "bold" },
+              { kind: "text", text: " and an " },
+              { kind: "link", text: "inline link", href: "/services" },
+              { kind: "text", text: ". The aside holds the contents list and stays sticky on desktop." },
+            ],
+          },
+          { kind: "h3", text: "Lists" },
+          {
+            kind: "ul",
+            items: [
+              [{ kind: "text", text: "Bullets use a sky-blue dot" }],
+              [{ kind: "text", text: "Numbered steps use tint badges" }],
+            ],
+          },
+          { kind: "h2", id: "ds-article-two", text: "A second section" },
+          {
+            kind: "ol",
+            items: [
+              [{ kind: "text", text: "Walk the space" }],
+              [{ kind: "text", text: "Write the scope" }],
+            ],
+          },
+        ]}
       />
 
       {/* 10 — MarqueeRule -------------------------------------------------- */}

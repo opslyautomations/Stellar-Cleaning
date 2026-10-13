@@ -1,3 +1,4 @@
+import { getPosts } from "./blog";
 import { AREAS, BUSINESS, SERVICES } from "./business";
 
 export type PageSeo = {
@@ -17,7 +18,7 @@ export type PageSeo = {
  * Every title and description on this site, in one table.
  *
  * Keeping them together is what makes "no duplicate titles, no duplicate
- * descriptions, all 21 in range" a checkable property rather than a hope.
+ * descriptions, all in range" a checkable property rather than a hope.
  * Each area description is written for that city; none is generated.
  */
 export const PAGES: Record<string, PageSeo> = {
@@ -147,13 +148,26 @@ export const PAGES: Record<string, PageSeo> = {
     ogKicker: "TRUSTED BY LOCALS",
     priority: 0.6,
   },
-  "/specials": {
-    title: "Current Specials & Offers | Stellar Cleaning, Corvallis OR",
-    description: "Current cleaning offers from Stellar Cleaning Solutions: new client discount, recurring service savings and free estimates across all ten cities we serve.",
-    ogTitle: "Current specials",
-    ogKicker: "LIMITED OFFERS",
-    priority: 0.6,
+  "/blog": {
+    title: "Cleaning Tips & Guides for Oregon Homes and Businesses",
+    description: "Practical cleaning guides for the Willamette Valley and Central Oregon: house cleaning, move-out checklists, office and janitorial care, and seasonal tips.",
+    ogTitle: "Cleaning guides and answers",
+    ogKicker: "THE BLOG",
+    priority: 0.7,
   },
+  // One entry per post, from the post's own frontmatter.
+  ...Object.fromEntries(
+    getPosts().map((post) => [
+      `/blog/${post.slug}`,
+      {
+        title: post.metaTitle,
+        description: post.description,
+        ogTitle: post.title,
+        ogKicker: post.category.toUpperCase(),
+        priority: 0.6,
+      },
+    ])
+  ),
   "/gallery": {
     title: "Photo Gallery | Stellar Cleaning Solutions, Corvallis OR",
     description: "See the standard. Commercial, office and residential cleaning work by Stellar Cleaning Solutions across the Willamette Valley and across Central Oregon.",
@@ -170,7 +184,7 @@ export const PAGES: Record<string, PageSeo> = {
   },
 };
 
-/** All 21 routes, in navigation order. `/design-system` is deliberately absent. */
+/** Every indexable route (21 core pages plus the blog), in navigation order. `/design-system` is deliberately absent. */
 export const ROUTES: string[] = [
   "/",
   "/about",
@@ -178,7 +192,8 @@ export const ROUTES: string[] = [
   ...SERVICES.map((s) => `/services/${s.slug}`),
   ...AREAS.map((a) => `/areas/${a.slug}`),
   "/reviews",
-  "/specials",
+  "/blog",
+  ...getPosts().map((post) => `/blog/${post.slug}`),
   "/gallery",
   "/contact",
 ];

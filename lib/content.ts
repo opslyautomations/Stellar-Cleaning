@@ -1,6 +1,5 @@
 import { Briefcase, Building2, ClipboardCheck, Home } from "lucide-react";
 import type { OffsetCard } from "@/components/ui/OffsetCardGrid";
-import type { Offer } from "@/components/ui/OfferCards";
 import type { CoverageGroup } from "@/components/ui/CoverageBand";
 import type { IndexGroup } from "@/components/ui/IndexColumns";
 import { AREAS, REGIONS, SERVICES, areasByRegion } from "./business";
@@ -74,37 +73,6 @@ export const DIFFERENTIATORS = [
     title: "Trained and vetted teams",
     body: "Every crew member is background-checked, insured and trained before they set foot on a job.",
   },
-];
-
-export const OFFERS: Offer[] = [
-  {
-    ribbon: "NEW CLIENT",
-    title: "First-time clean discount",
-    body: "New clients receive 20% off their first cleaning service, residential or commercial. Applies to the first scheduled clean after the free walkthrough.",
-    href: "/contact",
-    cta: "Claim Your Discount",
-  },
-  {
-    ribbon: "BEST VALUE",
-    title: "Recurring service bundle",
-    body: "Sign up for weekly or bi-weekly service and save 15% on every clean. Lock in your rate today.",
-    href: "/contact",
-    cta: "Start Saving",
-  },
-  {
-    ribbon: "NO OBLIGATION",
-    title: "Free estimate",
-    body: "Not sure what you need? We visit your space, assess the scope and provide a quote with no obligation and no pressure.",
-    href: "/contact",
-    cta: "Get Your Free Estimate",
-  },
-];
-
-/** Short homepage variants of the same three offers. */
-export const OFFERS_SHORT: Offer[] = [
-  { ...OFFERS[0], body: "New clients get 20% off their first cleaning, residential or commercial.", cta: "Claim Your Discount" },
-  { ...OFFERS[1], body: "Sign up for weekly or bi-weekly service and save 15% on every clean. Lock in your rate today." },
-  { ...OFFERS[2], body: "Not sure what you need? We'll visit, assess the scope and quote it.", cta: "Get a Free Estimate" },
 ];
 
 export const PROCESS_STEPS = [

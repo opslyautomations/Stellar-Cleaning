@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Phone, Star } from "lucide-react";
 
 import GHLForm from "@/components/GHLForm";
@@ -8,7 +9,6 @@ import CtaSlab from "@/components/ui/CtaSlab";
 import LedgerRows from "@/components/ui/LedgerRows";
 import MarqueeRule from "@/components/ui/MarqueeRule";
 import NumberedProcess from "@/components/ui/NumberedProcess";
-import OfferCards from "@/components/ui/OfferCards";
 import OffsetCardGrid from "@/components/ui/OffsetCardGrid";
 import PortraitAside from "@/components/ui/PortraitAside";
 import QuoteWall from "@/components/ui/QuoteWall";
@@ -19,16 +19,24 @@ import { AREAS, BUSINESS, CALL_LABEL, TEL_HREF } from "@/lib/business";
 import {
   DIFFERENTIATORS,
   MARQUEE_TEXT,
-  OFFERS_SHORT,
   PROCESS_STEPS,
   SERVICE_CARDS,
   coverageGroups,
 } from "@/lib/content";
+import { getPost } from "@/lib/blog";
+import { postCard } from "@/lib/blog-cards";
 import { HOME_PORTRAIT, SERVICE_IMAGES } from "@/lib/images";
 import { REVIEWS } from "@/lib/reviews";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ path: "/" });
+
+/** One residential, one move-out and one commercial guide. */
+const FEATURED_POSTS = [
+  "deep-cleaning-vs-regular-house-cleaning",
+  "move-out-cleaning-checklist-oregon",
+  "how-often-should-an-office-be-cleaned",
+];
 
 export default function HomePage() {
   return (
@@ -47,8 +55,8 @@ export default function HomePage() {
             <Button href={TEL_HREF} variant="primary" icon={<Phone size={18} aria-hidden="true" />}>
               {CALL_LABEL}
             </Button>
-            <Button href="/specials" variant="secondary">
-              See Current Specials
+            <Button href="/services" variant="secondary">
+              Explore Our Services
             </Button>
           </>
         }
@@ -154,8 +162,22 @@ export default function HomePage() {
         }
       />
 
-      {/* 10 — Specials */}
-      <OfferCards stamp="LIMITED OFFERS" title="Current specials" offers={OFFERS_SHORT} />
+      {/* 10 — From the blog */}
+      <OffsetCardGrid
+        stamp="FROM THE BLOG"
+        title="Answers to the questions we hear most"
+        lede={
+          <>
+            Practical guides for homes and businesses in the valley and Central Oregon.{" "}
+            <Link href="/blog">Browse all guides →</Link>
+          </>
+        }
+        cards={FEATURED_POSTS.flatMap((slug) => {
+          const post = getPost(slug);
+          return post ? [postCard(post)] : [];
+        })}
+        columns={3}
+      />
 
       {/* 11 — Final CTA */}
       <CtaSlab

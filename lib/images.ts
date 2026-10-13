@@ -34,10 +34,6 @@ export const HOME_PORTRAIT: SiteImage = {
   alt: "A cleaner in gloves and a protective mask wiping down interior window shutters.",
 };
 
-export const ABOUT_BUSINESS: SiteImage = {
-  ...unsplash("photo-1527515637462-cff94eecc1ac", "landscape"),
-  alt: "A vacuum head lifting scattered confetti from a carpet during a post-event clean.",
-};
 
 export const ABOUT_OWNER: SiteImage = {
   ...unsplash("photo-1628177142898-93e36e4e3a50", "landscape"),
@@ -205,6 +201,25 @@ export const CITY_IMAGES: Record<string, CityImage> = {
       licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Redmond,_Oregon,_Business_Hwy_97.jpg",
     },
+  },
+};
+
+/**
+ * The About page's "based in Corvallis" photo: a real Corvallis landscape in
+ * place of stock cleaning photography. CC BY 4.0, credited on the photo and
+ * on /credits.
+ */
+export const ABOUT_BUSINESS: CityImage = {
+  src: "/images/about/willamette-river-corvallis.jpg",
+  width: 1280,
+  height: 848,
+  alt: "The Willamette River at Willamette Park in Corvallis, with a green tree line on the far bank under a blue sky and white clouds.",
+  credit: {
+    author: "Gary Halvorson, Oregon State Archives",
+    license: "CC BY 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/4.0",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Willamette_Park,_Willamette_River,_Corvallis_-_DPLA_-_18e009415814b31e1aec25ab437f49f8.jpg",
   },
 };
 

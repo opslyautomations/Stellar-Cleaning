@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Phone } from "lucide-react";
 
@@ -15,6 +16,7 @@ import TabDossier from "@/components/ui/TabDossier";
 
 import { CALL_LABEL, SERVICES, TEL_HREF, serviceBySlug } from "@/lib/business";
 import { relatedServices } from "@/lib/content";
+import { postsForService } from "@/lib/blog";
 import { SERVICE_IMAGES } from "@/lib/images";
 import { SERVICE_CONTENT } from "@/lib/services-content";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
@@ -43,6 +45,8 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
 
   // Tones alternate down the page; the CTA slab is always the dark anchor.
   const toneFor = (index: number) => (index % 2 === 0 ? ("paper" as const) : ("alt" as const));
+
+  const guides = postsForService(slug).slice(0, 3);
 
   const blocks = content.order.map((key, index) => {
     const tone = toneFor(index);
@@ -118,6 +122,19 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
           title="Related services"
           groups={relatedServices(slug)}
           columns={3}
+          footNote={
+            guides.length > 0 ? (
+              <>
+                Related guides:{" "}
+                {guides.map((post, i) => (
+                  <span key={post.slug}>
+                    {i > 0 ? " · " : null}
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </span>
+                ))}
+              </>
+            ) : undefined
+          }
         />
       );
     }

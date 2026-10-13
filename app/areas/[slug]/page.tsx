@@ -14,6 +14,7 @@ import PortraitAside from "@/components/ui/PortraitAside";
 import { AREAS, CALL_LABEL, TEL_HREF, areaBySlug } from "@/lib/business";
 import { AREA_NOTES, SERVICE_CARDS } from "@/lib/content";
 import { AREA_CONTENT } from "@/lib/areas-content";
+import { postsForArea } from "@/lib/blog";
 import { CITY_IMAGES } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -89,6 +90,8 @@ export default async function AreaPage(props: { params: Promise<{ slug: string }
       />
     );
 
+  const guides = postsForArea(slug).slice(0, 4);
+
   const nearby = (
     <IndexColumns
       key="nearby"
@@ -115,8 +118,16 @@ export default async function AreaPage(props: { params: Promise<{ slug: string }
             },
           ],
         },
+        ...(guides.length > 0
+          ? [
+              {
+                label: `${area.name} guides`,
+                items: guides.map((post) => ({ href: `/blog/${post.slug}`, label: post.title })),
+              },
+            ]
+          : []),
       ]}
-      columns={2}
+      columns={guides.length > 0 ? 3 : 2}
       footNote="Full coverage across the Willamette Valley and Central Oregon — ten cities on two scheduled routes."
     />
   );

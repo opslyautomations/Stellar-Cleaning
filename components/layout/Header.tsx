@@ -18,12 +18,11 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services", dropdown: "services" },
   { label: "Service Areas", href: "/areas/corvallis", dropdown: "areas" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Specials", href: "/specials" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -132,7 +131,13 @@ export default function Header() {
       <header className="header" data-stuck={stuck}>
         <Container>
           <div className="header__bar">
-            <Link className="header__wordmark" href="/">
+            {/* The logo is the home link; there is no separate "Home" nav item. */}
+            <Link
+              className="header__wordmark"
+              href="/"
+              aria-label={`${BUSINESS.name} home`}
+              aria-current={pathname === "/" ? "page" : undefined}
+            >
               <Image className="brand-mark" src="/images/logo.png" alt="" width={48} height={48} />
               <span className="header__wordmark-text">Stellar Cleaning Solutions</span>
             </Link>
@@ -232,7 +237,7 @@ export default function Header() {
         >
           <Container>
             <div className="drawer__top">
-              <Link className="header__wordmark" href="/">
+              <Link className="header__wordmark" href="/" aria-label={`${BUSINESS.name} home`}>
                 <Image className="brand-mark" src="/images/logo.png" alt="" width={48} height={48} />
                 <span className="header__wordmark-text">Stellar Cleaning Solutions</span>
               </Link>
@@ -243,9 +248,6 @@ export default function Header() {
             </div>
 
             <div className="drawer__body">
-              <Link className="drawer__link" href="/">
-                Home
-              </Link>
               <Link className="drawer__link" href="/about">
                 About
               </Link>
@@ -297,8 +299,8 @@ export default function Header() {
               <Link className="drawer__link" href="/reviews">
                 Reviews
               </Link>
-              <Link className="drawer__link" href="/specials">
-                Specials
+              <Link className="drawer__link" href="/blog">
+                Blog
               </Link>
               <Link className="drawer__link" href="/gallery">
                 Gallery

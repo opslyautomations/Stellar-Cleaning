@@ -16,18 +16,21 @@ export function absolute(path: string): string {
  * no page writes a raw Metadata object.
  *
  * Title and description default to the registry in `seo-content.ts`, which is
- * what keeps all 21 unique and inside the length windows.
+ * what keeps every title unique and inside the length windows.
  */
 export function buildMetadata({
   path,
   title,
   description,
   ogImage,
+  article,
 }: {
   path: string;
   title?: string;
   description?: string;
   ogImage?: string;
+  /** Set on blog posts: switches Open Graph to an article with its dates. */
+  article?: { publishedTime: string; section: string; tags: string[] };
 }): Metadata {
   const seo = pageSeo(path);
   const finalTitle = title ?? seo.title;
@@ -44,7 +47,16 @@ export function buildMetadata({
       title: finalTitle,
       description: finalDescription,
       url,
-      type: "website",
+      ...(article
+        ? {
+            type: "article" as const,
+            publishedTime: article.publishedTime,
+            modifiedTime: article.publishedTime,
+            section: article.section,
+            tags: article.tags,
+            authors: [BUSINESS.legalName],
+          }
+        : { type: "website" as const }),
       siteName: BUSINESS.name,
       locale: "en_US",
       images: [

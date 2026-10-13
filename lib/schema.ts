@@ -182,3 +182,57 @@ export function contactPageSchema(): Json {
     mainEntity: { "@id": BUSINESS_ID },
   };
 }
+
+/** One per blog post. The business is author and publisher — no invented bylines. */
+export function blogPostingSchema(post: {
+  slug: string;
+  title: string;
+  description: string;
+  keyword: string;
+  category: string;
+  date: string;
+  words: number;
+  areas: string[];
+}): Json {
+  const url = absolute(`/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: post.title,
+    description: post.description,
+    url,
+    mainEntityOfPage: url,
+    image: `${BUSINESS.domain}${ogPath(`/blog/${post.slug}`)}`,
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    keywords: post.keyword,
+    wordCount: post.words,
+    inLanguage: "en-US",
+    author: { "@id": BUSINESS_ID },
+    publisher: { "@id": BUSINESS_ID },
+    about: post.areas
+      .map((slug) => AREAS.find((area) => area.slug === slug))
+      .filter((area) => area !== undefined)
+      .map((area) => ({ "@type": "City", name: `${area.name}, ${BUSINESS.stateFull}` })),
+  };
+}
+
+/** The blog index: a Blog node listing every post. */
+export function blogSchema(posts: { slug: string; title: string; date: string }[]): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${absolute("/blog")}#blog`,
+    name: `${BUSINESS.name} Blog`,
+    url: absolute("/blog"),
+    publisher: { "@id": BUSINESS_ID },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: absolute(`/blog/${post.slug}`),
+      datePublished: post.date,
+    })),
+  };
+}

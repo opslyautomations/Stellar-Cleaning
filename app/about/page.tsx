@@ -56,6 +56,7 @@ export default function AboutPage() {
           "Our team delivers reliable, thorough and consistent results — so our clients can focus on what matters most to them. Whether it is a one-time deep clean before a reopening or a nightly janitorial contract, the standard is the same on every job.",
         ]}
         image={{ ...ABOUT_BUSINESS, priority: true }}
+        credit={ABOUT_BUSINESS.credit}
       />
 
       {/* 2 — What sets us apart */}
