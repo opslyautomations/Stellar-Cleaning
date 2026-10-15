@@ -46,6 +46,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${BUSINESS.gtmId}');`,
           }}
         />
+        {/* Google Analytics 4, verbatim from the GA4 install snippet. Page views
+            go to GA4 from here, so GTM must not also carry a GA4 config tag. */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${BUSINESS.ga4Id}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${BUSINESS.ga4Id}');`,
+          }}
+        />
         {/* Marks that JS is running, so the pre-reveal hidden state may apply.
             Without it nothing on the page is ever hidden. */}
         <script

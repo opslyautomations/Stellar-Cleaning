@@ -90,6 +90,22 @@ export const PROCESS_STEPS = [
   },
 ];
 
+/** What follows a quote request. Shared by /contact and /thank-you so they cannot disagree. */
+export const NEXT_STEPS = [
+  {
+    title: "We call or email back",
+    body: "Usually the same business day, during business hours.",
+  },
+  {
+    title: "We walk the space",
+    body: "At a time that works for you, so the quote reflects the actual square footage and scope.",
+  },
+  {
+    title: "You get a written quote",
+    body: "No obligation to book, no deposit and no pressure either way.",
+  },
+];
+
 /** Every city, grouped by region, for CoverageBand. */
 export function coverageGroups(): CoverageGroup[] {
   return REGIONS.map((region) => ({

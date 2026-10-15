@@ -11,26 +11,11 @@ import SplitAnchorHero from "@/components/ui/SplitAnchorHero";
 import StampBadge from "@/components/ui/StampBadge";
 
 import { BUSINESS, CALL_LABEL, MAIL_HREF, TEL_HREF } from "@/lib/business";
-import { areaIndexGroups } from "@/lib/content";
+import { NEXT_STEPS, areaIndexGroups } from "@/lib/content";
 import { breadcrumbSchema, contactPageSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ path: "/contact" });
-
-const NEXT_STEPS = [
-  {
-    title: "We call or email back",
-    body: "Usually the same business day, within the hours below.",
-  },
-  {
-    title: "We walk the space",
-    body: "At a time that works for you, so the quote reflects the actual square footage and scope.",
-  },
-  {
-    title: "You get a written quote",
-    body: "No obligation to book, no deposit and no pressure either way.",
-  },
-];
 
 export default function ContactPage() {
   return (
