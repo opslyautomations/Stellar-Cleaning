@@ -41,6 +41,7 @@ export const BUSINESS = {
   ],
   formId: "d56VOX7QnarTqGsA9E89",
   formHost: "https://api.opslyautomations.com",
+  gtmId: "GTM-K593J2LT",
   credit: { label: "Website by Opsly Automations", href: "https://opslyautomations.com" },
 } as const;
 
